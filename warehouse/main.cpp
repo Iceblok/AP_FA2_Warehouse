@@ -21,7 +21,23 @@ int main(void){
     Employee e("Yunus", true);
     std::cout << e.getName() << std::endl;
 
+    w.addEmployee(e);
+
+
     Pallet p;
     std::cout << p.getItemCount() << std::endl;
 
+    e.setBusy(true);
+
+    if (e.getBusy()) {
+        std::cout << "yup" << std::endl;
+    } else {
+        std::cout << "sii" << std::endl;
+    }
+    
+
+
+    for (Employee emp : w.employees) {
+        std::cout << emp.getName() << std::endl;
+    }
 }

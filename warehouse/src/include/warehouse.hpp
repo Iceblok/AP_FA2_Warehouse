@@ -9,8 +9,8 @@ class Warehouse {
     public:
 
         // Warehouse variables
-        std::vector<Employee> Employees;
-        std::vector<Shelf> Shelves;
+        std::vector<Employee> employees;
+        std::vector<Shelf> shelves;
 
         // Warehouse constructor
         Warehouse();
@@ -18,7 +18,7 @@ class Warehouse {
         // Warehouse functions
         void addEmployee(Employee employee);
         void addShelf(Shelf shelf);
-        // bool rearrangeShelf(Shelf& shelf);
+        bool rearrangeShelf(Shelf& shelf);
         // bool pickItems(std::string itemName, int itemCount);
         
 };
