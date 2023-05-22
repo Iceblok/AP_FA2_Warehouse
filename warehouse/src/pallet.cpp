@@ -49,3 +49,11 @@ bool Pallet::putOne() {
         return false;
     }
 }
+
+bool Pallet::isEmpty() const {
+    return itemCount == 0;
+}
+
+bool Pallet::isFull() const {
+    return itemCount >= itemCapacity;
+}

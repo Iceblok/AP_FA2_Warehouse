@@ -1,7 +1,9 @@
 #pragma once
 #include <string>
+#include "icontainer.hpp"
 
-class Pallet {
+
+class Pallet : public IContainer {
 
     private:
 
@@ -25,5 +27,7 @@ class Pallet {
         bool reallocateEmptyPallet(std::string itemName, int itemCapacity);
         bool takeOne();
         bool putOne();
+        bool isEmpty() const override;
+        bool isFull() const override;
         
 };

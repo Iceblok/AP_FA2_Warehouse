@@ -3,7 +3,7 @@
 #include <iostream>
 
 // Warehouse constructor
-Warehouse::Warehouse() {};
+Warehouse::Warehouse() : employees({}), shelves({}) {}
 
 
 // Warehouse functions
@@ -50,6 +50,36 @@ bool Warehouse::rearrangeShelf(Shelf& shelf) {
     }
 }
 
-// bool Warehouse::pickItems(std::string itemName, int itemCount) {
-//     Shelves.
-// }
+bool Warehouse::pickItems(std::string itemName, int itemCount) {
+    int availableItems = 0;
+
+    for (Shelf& shelf : shelves) {
+        for (Pallet& pallet : shelf.pallets) {
+            if (pallet.getItemName() == itemName) {
+                availableItems += pallet.getItemCount();
+            }            
+        }
+    }
+
+    if (availableItems < itemCount) {
+        return false;
+    } else if (availableItems >= itemCount) {
+        int pickedItems = 0;
+        
+        for (Shelf& shelf : shelves) {
+            for (Pallet& pallet : shelf.pallets) {
+                if (itemName == pallet.getItemName()) {
+                    const int end = pallet.getItemCount();
+                    for (int i=0; i < end; i++) {
+                        if (pickedItems == itemCount) {
+                            return true;
+                        } else if (pallet.takeOne()) {
+                            pickedItems++;
+                        }
+                    }  
+                }
+            }
+        }
+    }
+    return false;
+}

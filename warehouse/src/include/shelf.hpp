@@ -2,8 +2,10 @@
 #include <string>
 #include <array>
 #include "pallet.hpp"
+#include "icontainer.hpp"
 
-class Shelf {
+
+class Shelf : public IContainer {
 
     public:
 
@@ -15,5 +17,7 @@ class Shelf {
         
         // Shelf functions
         bool swapPallet(int slot, int slot2);
+        bool isEmpty() const override;
+        bool isFull() const override;
         
 };
