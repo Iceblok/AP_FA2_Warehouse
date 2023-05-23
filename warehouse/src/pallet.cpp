@@ -26,7 +26,7 @@ int Pallet::getRemainingSpace() {
 }
 
 bool Pallet::reallocateEmptyPallet(std::string itemName, int itemCapacity) {
-    if (itemCount == 0) {
+    if (isEmpty()) {
         itemName = itemName;
         itemCapacity = itemCapacity;
         return true;
