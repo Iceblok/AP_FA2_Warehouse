@@ -2,9 +2,6 @@
 #include "../src/include/pallet.hpp"
 
 
-/**
- * Test cases for Pallet
-*/
 TEST_CASE("Test case for Pallet constructor. Check for values (string Books, int 10, 6)", "constructors, constructor Pallet") {
     Pallet p("Books", 10, 6);
     REQUIRE(p.getItemName() == "Books");

@@ -2,10 +2,7 @@
 #include "../src/include/shelf.hpp"
 
 
-/**
- * Test cases for Shelf
-*/
-TEST_CASE("Test case for default Shelf. Check if shelf has 4 empty (default) pallets", "Default Shelf") {
+TEST_CASE("Test case for default Shelf. Check if shelf has 4 empty (default) pallets", "default Shelf") {
     Shelf s;
     REQUIRE(s.pallets[3].getItemName() == "");
     REQUIRE(s.pallets[3].getItemCount() == 0);
@@ -95,4 +92,3 @@ TEST_CASE("Test if function isEmpty() for Shelf returns false", "isEmpty()") {
     };
     REQUIRE(s.isEmpty() == false);
 }
-
