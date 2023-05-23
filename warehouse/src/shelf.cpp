@@ -22,7 +22,7 @@ bool Shelf::isEmpty() const {
     int numberOfEmptyPallets = 0;
 
     for (Pallet pallet : pallets) {
-        if (pallet.getItemCount() == 0) {
+        if (pallet.isEmpty()) {
             numberOfEmptyPallets++;
         } else {
             // pass

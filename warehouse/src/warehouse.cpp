@@ -81,5 +81,39 @@ bool Warehouse::pickItems(std::string itemName, int itemCount) {
             }
         }
     }
-    return false;
+    return true;
+}
+
+bool Warehouse::putItems(std::string itemName, int itemCount) {
+    int spaceAvailableOnPallets = 0;
+
+    for (Shelf& shelf : shelves) {
+        for (Pallet& pallet : shelf.pallets) {
+            if (pallet.getItemName() == itemName) {
+                spaceAvailableOnPallets += pallet.getRemainingSpace();
+            }            
+        }
+    }
+
+    if (spaceAvailableOnPallets < itemCount) {
+        return false;
+    } else if (spaceAvailableOnPallets >= itemCount) {
+        int placedItems = 0;
+
+        for (Shelf& shelf : shelves) {
+            for (Pallet& pallet : shelf.pallets) {
+                if (itemName == pallet.getItemName()) {
+                    const int end = pallet.getRemainingSpace();
+                    for (int i=0; i < end; i++) {
+                        if (placedItems == itemCount) {
+                            return true;
+                        } else if (pallet.putOne()) {
+                            placedItems++;
+                        }
+                    }  
+                }
+            }
+        }
+    }
+    return true;
 }
