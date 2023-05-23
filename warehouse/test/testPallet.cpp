@@ -1,6 +1,7 @@
 #include "include/catch.hpp"
 #include "../src/include/pallet.hpp"
 
+
 /**
  * Test cases for Pallet
 */
@@ -65,22 +66,22 @@ TEST_CASE("Test if function putOne() returns false", "putOne()") {
     REQUIRE(p.putOne() == false);
 }
 
-TEST_CASE("Test if function isFull() returns true", "isFull()") {
+TEST_CASE("Test if function isFull() for Pallet returns true", "isFull()") {
     Pallet p("Books", 10, 10);
     REQUIRE(p.isFull() == true);
 }
 
-TEST_CASE("Test if function isFull() returns false", "isFull()") {
+TEST_CASE("Test if function isFull() for Pallet returns false", "isFull()") {
     Pallet p("Books", 10, 1);
     REQUIRE(p.isFull() == false);
 }
 
-TEST_CASE("Test if function isEmpty() returns true", "isEmpty()") {
+TEST_CASE("Test if function isEmpty() for Pallet returns true", "isEmpty()") {
     Pallet p("Books", 10, 0);
     REQUIRE(p.isEmpty() == true);
 }
 
-TEST_CASE("Test if function isEmpty() returns false", "isEmpty()") {
+TEST_CASE("Test if function isEmpty() for Pallet returns false", "isEmpty()") {
     Pallet p("Books", 10, 1);
     REQUIRE(p.isEmpty() == false);
 }
