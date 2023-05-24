@@ -17,7 +17,7 @@ TEST_CASE("Test case if function calculates available items", "calculateAvailabl
     REQUIRE(warehouse.calculateAvailableItems("Boxes") == 150);
 }
 
-TEST_CASE("Test case if function pickItems returns true and changes the itemCount from Pallet", "pickItems(), from warehouse") {
+TEST_CASE("Test case if function pickItems returns true and changes remaining space on Pallet", "pickItems(), from warehouse") {
     Warehouse warehouse;
 
     Shelf shelf1 = Shelf();
@@ -28,11 +28,10 @@ TEST_CASE("Test case if function pickItems returns true and changes the itemCoun
         Pallet("Boxes", 50, 50)
     };    
     warehouse.addShelf(shelf1);
-    warehouse.addEmployee(Employee("David", true));
 
-    REQUIRE(warehouse.shelves[0].pallets[0].getItemCount() == 10);
+    REQUIRE(warehouse.shelves[0].pallets[0].getRemainingSpace() == 90);
     REQUIRE(warehouse.pickItems("Books", 10) == true);
-    REQUIRE(warehouse.shelves[0].pallets[0].getItemCount() == 0);
+    REQUIRE(warehouse.shelves[0].pallets[0].getRemainingSpace() == 100);
 }
 
 TEST_CASE("Test case if function pickItems returns false and itemCount doesn't change from Pallet", "pickItems(), from warehouse") {
@@ -46,7 +45,6 @@ TEST_CASE("Test case if function pickItems returns false and itemCount doesn't c
         Pallet("Boxes", 50, 50)
     };    
     warehouse.addShelf(shelf1);
-    warehouse.addEmployee(Employee("David", true));
 
     REQUIRE(warehouse.shelves[0].pallets[0].getItemCount() == 10);
     REQUIRE(warehouse.pickItems("Books", 11) == false);
@@ -64,7 +62,6 @@ TEST_CASE("Test case if function pickItems returns true and empties the Shelf", 
         Pallet("Boxes", 50, 50)
     };    
     warehouse.addShelf(shelf1);
-    warehouse.addEmployee(Employee("David", true));
 
     REQUIRE(warehouse.shelves[0].isFull() == true);
     REQUIRE(warehouse.shelves[0].isEmpty() == false);
@@ -73,7 +70,7 @@ TEST_CASE("Test case if function pickItems returns true and empties the Shelf", 
     REQUIRE(warehouse.shelves[0].isFull() == false);
 }
 
-TEST_CASE("", "pickItems(), from warehouse") {
+TEST_CASE("Test case if function pickItems works on multiple shelves and pallets", "pickItems(), from warehouse") {
     Warehouse warehouse;
 
     Shelf shelf1 = Shelf();
@@ -100,9 +97,8 @@ TEST_CASE("", "pickItems(), from warehouse") {
     REQUIRE(warehouse.shelves[1].isFull() == true);
     REQUIRE(warehouse.shelves[1].isEmpty() == false);
 
-    warehouse.addEmployee(Employee("Rianne", true));
     REQUIRE(warehouse.pickItems("Boxes", 400) == true);
-
+    
     REQUIRE(warehouse.shelves[0].isEmpty() == true);
     REQUIRE(warehouse.shelves[0].isFull() == false);
     REQUIRE(warehouse.shelves[1].isEmpty() == true);
