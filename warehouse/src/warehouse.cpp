@@ -129,3 +129,17 @@ bool Warehouse::putItems(std::string itemName, int itemCount) {
     }
     return true;
 }
+
+std::ostream &operator<<(std::ostream& os, Warehouse& w) {
+    os << "Employees: " << std::endl;
+    for (Employee& employee : w.employees) {
+        os << employee << std::endl;
+    }
+
+    os << std::endl << "Shelves: " << std::endl;
+    for (Shelf& shelf : w.shelves) {
+        os << shelf << std::endl;
+    }
+
+    return os;
+}

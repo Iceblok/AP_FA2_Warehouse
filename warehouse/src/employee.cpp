@@ -1,4 +1,5 @@
 #include "include/employee.hpp"
+#include <iostream>
 
 
 // Employee constructor
@@ -24,4 +25,9 @@ bool Employee::getForkliftCertificate() {
 
 void Employee::setForkliftCertificate(bool forkliftCertificate) {
     this->forkliftCertificate = forkliftCertificate;
+}
+
+std::ostream &operator<<(std::ostream& os, Employee& e) {
+    os << "(Name: " << e.name << ", Forklift Certificate: " << std::boolalpha << e.forkliftCertificate << ", Busy: " << std::boolalpha << e.busy << ")";
+    return os;
 }

@@ -1,4 +1,5 @@
 #include "include/pallet.hpp"
+#include <iostream>
 
 
 // Pallet constructor
@@ -59,4 +60,9 @@ bool Pallet::isEmpty() const {
 
 bool Pallet::isFull() const {
     return itemCount == itemCapacity;
+}
+
+std::ostream &operator<<(std::ostream& os, Pallet& p) {
+    os << "(itemName: " << p.itemName << ", itemCapacity: " << p.itemCapacity << ", itemCount: " << p.itemCount << ")";
+    return os;
 }

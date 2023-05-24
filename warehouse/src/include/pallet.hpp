@@ -29,5 +29,6 @@ class Pallet : public IContainer {
         bool putOne();
         bool isEmpty() const override;
         bool isFull() const override;
+        friend std::ostream &operator<<(std::ostream& os, Pallet& p);
         
 };

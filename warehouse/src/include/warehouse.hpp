@@ -24,5 +24,6 @@ class Warehouse {
         bool putItems(std::string itemName, int itemCount);
         int calculateAvailableItems(std::string itemName);
         int calculateRemainingSpaceOnPallets(std::string itemName);
-        
+        friend std::ostream &operator<<(std::ostream& os, Warehouse& w);
+
 };

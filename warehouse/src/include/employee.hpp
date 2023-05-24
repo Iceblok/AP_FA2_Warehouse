@@ -8,8 +8,9 @@ class Employee {
 
         // Employee variables
         const std::string name;
-        bool busy;
         bool forkliftCertificate;
+        bool busy;
+
 
     public:
 
@@ -22,5 +23,6 @@ class Employee {
         void setBusy(bool busy);
         bool getForkliftCertificate();
         void setForkliftCertificate(bool forkliftCertificate);
+        friend std::ostream &operator<<(std::ostream& os, Employee& e);
         
 };

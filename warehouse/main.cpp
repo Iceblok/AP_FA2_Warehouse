@@ -35,7 +35,7 @@ int main(void) {
 
     for (Shelf shelf : warehouse.shelves) {
         for (Pallet pallet : shelf.pallets) {
-            std::cout << pallet.getItemCount() << std::endl;
+            std::cout << pallet << std::endl;
         }
     }
 
@@ -53,7 +53,7 @@ int main(void) {
 
     for (Shelf shelf : warehouse.shelves) {
         for (Pallet pallet : shelf.pallets) {
-            std::cout << pallet.getItemCount() << std::endl;
+            std::cout << pallet << std::endl;
         }
     }
 
@@ -69,10 +69,19 @@ int main(void) {
 
     for (Shelf shelf : warehouse.shelves) {
         for (Pallet pallet : shelf.pallets) {
-            std::cout << pallet.getItemCount() << std::endl;
+            std::cout << pallet << std::endl;
         }
     }
 
-    Pallet test = Pallet("test", 10, 15);
+
+    Employee emre("Emre", true);
+
+    std::cout << emre << std::endl;
+
+    // Pallet test = Pallet("test", 10, 15);
+
+    std::cout << shelf1;
+
+    std::cout << warehouse;
 
 }

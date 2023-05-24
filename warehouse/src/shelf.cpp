@@ -1,5 +1,6 @@
 #include "include/shelf.hpp"
 #include <array>
+#include <iostream>
 
 
 // Shelf constructor
@@ -44,4 +45,11 @@ bool Shelf::isFull() const {
     }
 
     return numberOfFullPallets == 4;
+}
+
+std::ostream &operator<<(std::ostream& os, Shelf& s) {
+    for (Pallet& pallet : s.pallets) {
+        os << pallet << std::endl;
+    }
+    return os;
 }
