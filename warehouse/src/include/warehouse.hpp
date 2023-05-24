@@ -22,5 +22,7 @@ class Warehouse {
         bool rearrangeShelf(Shelf& shelf);
         bool pickItems(std::string itemName, int itemCount);
         bool putItems(std::string itemName, int itemCount);
+        int calculateAvailableItems(std::string itemName);
+        int calculateRemainingSpaceOnPallets(std::string itemName);
         
 };

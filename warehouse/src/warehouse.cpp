@@ -50,7 +50,7 @@ bool Warehouse::rearrangeShelf(Shelf& shelf) {
     }
 }
 
-bool Warehouse::pickItems(std::string itemName, int itemCount) {
+int Warehouse::calculateAvailableItems(std::string itemName) {
     int availableItems = 0;
 
     for (Shelf& shelf : shelves) {
@@ -60,6 +60,12 @@ bool Warehouse::pickItems(std::string itemName, int itemCount) {
             }            
         }
     }
+
+    return availableItems;
+}
+
+bool Warehouse::pickItems(std::string itemName, int itemCount) {
+    int availableItems = calculateAvailableItems(itemName);
 
     if (availableItems < itemCount) {
         return false;
@@ -84,7 +90,7 @@ bool Warehouse::pickItems(std::string itemName, int itemCount) {
     return true;
 }
 
-bool Warehouse::putItems(std::string itemName, int itemCount) {
+int Warehouse::calculateRemainingSpaceOnPallets(std::string itemName) {
     int spaceAvailableOnPallets = 0;
 
     for (Shelf& shelf : shelves) {
@@ -95,9 +101,15 @@ bool Warehouse::putItems(std::string itemName, int itemCount) {
         }
     }
 
-    if (spaceAvailableOnPallets < itemCount) {
+    return spaceAvailableOnPallets;
+}
+
+bool Warehouse::putItems(std::string itemName, int itemCount) {
+    int remainingSpaceOnPallets = calculateRemainingSpaceOnPallets(itemName);
+
+    if (remainingSpaceOnPallets < itemCount) {
         return false;
-    } else if (spaceAvailableOnPallets >= itemCount) {
+    } else if (remainingSpaceOnPallets >= itemCount) {
         int placedItems = 0;
 
         for (Shelf& shelf : shelves) {

@@ -31,17 +31,34 @@ int main(void) {
 
     warehouse.addEmployee(Employee("Yunus", true));
 
-    if (warehouse.pickItems("Books", 25)) {
-        std::cout << "done" << std::endl;
-    } else {
-        std::cout << "not done" << std::endl;
-    }
+    std::cout << "begin" << std::endl;
 
     for (Shelf shelf : warehouse.shelves) {
         for (Pallet pallet : shelf.pallets) {
             std::cout << pallet.getItemCount() << std::endl;
         }
     }
+
+    std::cout << std::endl;
+
+
+
+    if (warehouse.pickItems("Books", 25)) {
+        std::cout << "done" << std::endl;
+    } else {
+        std::cout << "not done" << std::endl;
+    }
+
+
+
+    for (Shelf shelf : warehouse.shelves) {
+        for (Pallet pallet : shelf.pallets) {
+            std::cout << pallet.getItemCount() << std::endl;
+        }
+    }
+
+    std::cout << std::endl;
+
 
     if (warehouse.putItems("Books", 200)) {
         std::cout << "done" << std::endl;
@@ -57,7 +74,5 @@ int main(void) {
     }
 
     Pallet test = Pallet("test", 10, 15);
-
-
 
 }
