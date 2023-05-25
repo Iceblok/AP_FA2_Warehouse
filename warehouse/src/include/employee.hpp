@@ -8,8 +8,8 @@ class Employee {
 
         // Employee variables
         const std::string name;
-        bool forkliftCertificate;
         bool busy;
+        bool forkliftCertificate;
 
 
     public:

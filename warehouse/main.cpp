@@ -38,9 +38,16 @@ int main(void) {
     std::cout << e << std::endl;
     std::cout << std::endl;
 
+    Employee e1("Rianne", true);
+    e1.setBusy(true);
+    std::cout << "Showcase of our busy employee:" << std::endl;
+    std::cout << e1 << std::endl;
+    std::cout << std::endl;
+
     warehouse.shelves.push_back(s);
     warehouse.shelves.push_back(s1);
     warehouse.employees.push_back(e);
+    warehouse.employees.push_back(e1);
 
     // Showing results
     std::cout << "Showcasing that our warehouse is filled up" << std::endl;
