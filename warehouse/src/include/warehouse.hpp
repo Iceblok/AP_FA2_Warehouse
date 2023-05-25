@@ -19,6 +19,7 @@ class Warehouse {
         // Warehouse functions
         void addEmployee(Employee employee);
         void addShelf(Shelf shelf);
+        bool getAvailableEmployee();
         bool rearrangeShelf(Shelf& shelf);
         bool pickItems(std::string itemName, int itemCount);
         bool putItems(std::string itemName, int itemCount);

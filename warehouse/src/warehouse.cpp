@@ -15,8 +15,7 @@ void Warehouse::addShelf(Shelf shelf) {
     shelves.push_back(shelf);
 }
 
-bool Warehouse::rearrangeShelf(Shelf& shelf) {
-
+bool Warehouse::getAvailableEmployee() {
     bool availableEmployee = false;
     unsigned int index = 0;
 
@@ -28,16 +27,18 @@ bool Warehouse::rearrangeShelf(Shelf& shelf) {
             index++;
         }
     }
+    return availableEmployee;
+}
 
+bool Warehouse::rearrangeShelf(Shelf& shelf) {
+    bool availableEmployee = getAvailableEmployee();
     bool shelfSorted = false;
     int lengthOfShelf = sizeof(shelf.pallets) / sizeof(shelf.pallets[0]);
-
 
     if (availableEmployee) {
         while (!shelfSorted) {
             shelfSorted = true;
             for (int i = 0; i < lengthOfShelf - 1; i++) {
-
                 if (shelf.pallets[i].getItemCount() > shelf.pallets[i+1].getItemCount()) {
                     shelf.swapPallet(i, i+1);
                     shelfSorted = false;
