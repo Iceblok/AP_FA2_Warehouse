@@ -6,82 +6,64 @@
 
 
 int main(void) {
-    std::cout << "Hello world" << std::endl;
+    std::cout << "Welcome to our warehouse!" << std::endl;
     
-    Warehouse warehouse = Warehouse();
+    // Showcasing that our warehouse is empty
+    Warehouse warehouse;
+    std::cout << warehouse << std::endl;
 
-    Shelf shelf1 = Shelf();
-    shelf1.pallets = {
-        Pallet("Books", 100, 10), 
-        Pallet("Boxes", 50, 50), 
-        Pallet("Boxes", 50, 50), 
-        Pallet("Boxes", 50, 50)
-    };
-
-    Shelf shelf2 = Shelf();
-    shelf2.pallets = {
-        Pallet("Books", 100, 15), 
-        Pallet("Boxes", 50, 50), 
-        Pallet("Boxes", 50, 50), 
-        Pallet("Boxes", 50, 50)
-    };
-    
-    warehouse.addShelf(shelf1);
-    warehouse.addShelf(shelf2);
-
-    warehouse.addEmployee(Employee("Yunus", true));
-
-    std::cout << "begin" << std::endl;
-
-    for (Shelf shelf : warehouse.shelves) {
-        for (Pallet pallet : shelf.pallets) {
-            std::cout << pallet << std::endl;
-        }
-    }
-
+    // Filling up our warehouse
+    Pallet p("Books", 100, 100);
+    std::cout << "Showcase of our first pallet:" << std::endl << p << std::endl;
     std::cout << std::endl;
 
+    Pallet p1("Books", 100, 0);
+    Pallet p2("Boxes", 50, 50);
+    Pallet p3("Boxes", 50, 0);
 
+    Shelf s;
+    s.pallets = {p, p1, p2, p3};
+    std::cout << "Showcase of our first shelf:" << std::endl << s << std::endl;
 
-    if (warehouse.pickItems("Books", 25)) {
-        std::cout << "done" << std::endl;
-    } else {
-        std::cout << "not done" << std::endl;
-    }
+    Pallet p4("Books", 100, 100);
+    Pallet p5("Books", 100, 0);
+    Pallet p6("Boxes", 50, 50);
+    Pallet p7("Boxes", 50, 0);
 
+    Shelf s1;
+    s1.pallets = {p4, p5, p6, p7};
 
-
-    for (Shelf shelf : warehouse.shelves) {
-        for (Pallet pallet : shelf.pallets) {
-            std::cout << pallet << std::endl;
-        }
-    }
-
+    Employee e("David", true);
+    std::cout << "Showcase of our first employee:" << std::endl;
+    std::cout << e << std::endl;
     std::cout << std::endl;
 
+    warehouse.shelves.push_back(s);
+    warehouse.shelves.push_back(s1);
+    warehouse.employees.push_back(e);
 
-    if (warehouse.putItems("Books", 200)) {
-        std::cout << "done" << std::endl;
+    // Showing results
+    std::cout << "Showcasing that our warehouse is filled up" << std::endl;
+    std::cout << warehouse;
+
+    if (warehouse.pickItems("Books", 200)) {
+        std::cout << "All 200 Books are picked up" << std::endl;
     } else {
-        std::cout << "not done" << std::endl;
+        std::cout << "Picking up all 200 Books failed" << std::endl;
     }
+    std::cout << std::endl;
 
+    std::cout << "Showcasing that all pallets with Book are now empty" << std::endl;
+    std::cout << warehouse;
 
-    for (Shelf shelf : warehouse.shelves) {
-        for (Pallet pallet : shelf.pallets) {
-            std::cout << pallet << std::endl;
-        }
+    if (warehouse.putItems("Books", 400)) {
+        std::cout << "All 400 Books are put on pallets" << std::endl;
+    } else {
+        std::cout << "Putting all 400 Books on pallets failed" << std::endl;
     }
+    std::cout << std::endl;
 
-
-    Employee emre("Emre", true);
-
-    std::cout << emre << std::endl;
-
-    // Pallet test = Pallet("test", 10, 15);
-
-    std::cout << shelf1;
-
+    std::cout << "Showcasing that all pallets with Book are now full" << std::endl;
     std::cout << warehouse;
 
 }
